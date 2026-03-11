@@ -17,7 +17,9 @@ requires-python = ">=3.14"
 # 项目许可证
 license = "MIT"
 # 项目核心依赖列表
-dependencies = []
+dependencies = [
+    "langgraph>=1.1.0",
+]
 
 # 可选依赖配置
 [project.optional-dependencies]
