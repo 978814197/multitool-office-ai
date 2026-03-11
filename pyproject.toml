@@ -1,0 +1,79 @@
+# 项目元数据配置
+[project]
+# 项目名称
+name = "multitool-office-ai"
+# 项目版本号
+version = "0.1.0"
+# 项目描述
+description = "A multi-functional intelligent office assistant agent based on LangGraph."
+# 项目自述文件
+readme = "README.md"
+# 项目作者列表
+authors = [
+    { name = "ynyg", email = "978814197@qq.com" }
+]
+# 所需 Python 版本
+requires-python = ">=3.14"
+# 项目许可证
+license = "MIT"
+# 项目核心依赖列表
+dependencies = []
+
+# 可选依赖配置
+[project.optional-dependencies]
+# 测试相关依赖
+test = [
+    # Python 测试框架
+    "pytest>=7.0.0",
+    # pytest 异步支持
+    "pytest-asyncio>=0.21.0",
+    # 测试覆盖率工具
+    "pytest-cov>=4.0.0",
+]
+
+# 构建系统配置
+[build-system]
+# 构建后端所需依赖
+requires = ["uv_build>=0.9.18,<0.10.0"]
+# 使用的构建后端
+build-backend = "uv_build"
+
+# pytest 配置
+[tool.pytest.ini_options]
+# 最低 pytest 版本
+minversion = "7.0"
+# pytest 运行选项
+addopts = "-ra -q --strict-markers --strict-config --disable-warnings"
+# 测试文件目录
+testpaths = ["tests"]
+# 测试文件名模式
+python_files = ["test_*.py", "*_test.py"]
+# 测试类名模式
+python_classes = ["Test*"]
+# 测试函数名模式
+python_functions = ["test_*"]
+# 异步测试模式
+asyncio_mode = "auto"
+
+# 覆盖率运行配置
+[tool.coverage.run]
+# 要统计覆盖率的源码目录
+source = ["src"]
+# 忽略的测试文件路径
+omit = ["*/tests/*", "*/test_*"]
+
+# 覆盖率报告配置
+[tool.coverage.report]
+# 排除统计的代码行
+exclude_lines = [
+    # 不需要覆盖的代码标记
+    "pragma: no cover",
+    # __repr__ 方法
+    "def __repr__",
+    # 断言错误
+    "raise AssertionError",
+    # 未实现错误
+    "raise NotImplementedError",
+    # 主程序入口
+    "if __name__ == .__main__.:",
+]
