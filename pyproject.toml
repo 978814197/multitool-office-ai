@@ -19,6 +19,7 @@ license = "MIT"
 # 项目核心依赖列表
 dependencies = [
     "langgraph>=1.1.0",
+    "lark-oapi>=1.5.3",
 ]
 
 # 可选依赖配置
@@ -45,7 +46,7 @@ build-backend = "uv_build"
 # 最低 pytest 版本
 minversion = "7.0"
 # pytest 运行选项
-addopts = "-ra -q --strict-markers --strict-config --disable-warnings"
+addopts = "-s -ra -q --strict-markers --strict-config --disable-warnings"
 # 测试文件目录
 testpaths = ["tests"]
 # 测试文件名模式
