@@ -55,7 +55,7 @@ class FeiShuBot(BaseBot):
         :type data: lark.im.v1.P2ImMessageReceiveV1
         :return: 无返回值。
         """
-        self.actuator.task_queue.put_nowait(data)
+        self.actuator.data_queue.put_nowait(data)
 
     def start(self):
         """

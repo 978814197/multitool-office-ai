@@ -1,6 +1,6 @@
 from enum import IntEnum
 
-from .feishu import FeishuConfig, FeiShuBot, FeiShuClient
+from .feishu import FeishuConfig, FeiShuBot
 
 
 class ChannelEnum(IntEnum):
