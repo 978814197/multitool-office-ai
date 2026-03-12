@@ -1,3 +1,4 @@
+from .agents import SupervisorAgent
 from .bots import FeiShuBot, ChannelEnum
 from .config import ClientConfig
 
@@ -15,9 +16,13 @@ class MultitoolOfficeAiClient:
 
     def start(self) -> None:
         """启动渠道"""
+        # 创建主 Agent
+        agent = SupervisorAgent(self.config.supervisor_agent_config)
+        # 创建渠道
         match self.config.channel:
             case ChannelEnum.FEISHU:
-                bot = FeiShuBot(self.config.channel_config)
-                bot.start()
+                bot = FeiShuBot(self.config.channel_config, agent)
             case _:
                 raise ValueError(f"Unsupported channel: {self.config.channel}")
+        # 启动机器人
+        bot.start()

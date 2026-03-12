@@ -27,7 +27,7 @@ class SupervisorAgentState(BaseModel):
 class SupervisorAgent:
     """主 Agent"""
 
-    def __init__(self):
+    def __init__(self, config: SupervisorAgentConfig):
         """初始化主 Agent"""
         self.graph = self._build_graph()
 
