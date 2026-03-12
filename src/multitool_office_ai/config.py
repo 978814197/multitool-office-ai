@@ -17,7 +17,7 @@ class LoggingConfig(BaseModel):
 class ClientConfig(BaseModel):
     """客户端配置"""
     # 日志配置
-    logging_config: LoggingConfig
+    logging_config: LoggingConfig = LoggingConfig()
 
     # 主 Agent 配置
     supervisor_agent_config: SupervisorAgentConfig
