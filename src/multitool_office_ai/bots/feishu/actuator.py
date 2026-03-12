@@ -1,10 +1,13 @@
 import asyncio
 import traceback
 from asyncio.queues import Queue
+from logging import getLogger
 
 from .client import FeiShuClient
 from .config import FeishuConfig
 from ...agents import SupervisorAgent
+
+logger = getLogger("multitool_office_ai")
 
 
 class FeishuActuator:
@@ -40,10 +43,10 @@ class FeishuActuator:
             except asyncio.TimeoutError:
                 continue
             except asyncio.CancelledError:
-                print("[Actuator] 任务循环被取消")
+                logger.info("Actuator task loop cancelled")
                 break
             except Exception as e:
-                print(f"[Actuator] 处理任务异常: {e}")
+                logger.error(f"Actuator task processing error: {e}")
                 traceback.print_exc()
             finally:
                 self.task_queue.task_done()

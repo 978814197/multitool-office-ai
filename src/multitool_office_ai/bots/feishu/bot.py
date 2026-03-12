@@ -1,4 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor
+from logging import getLogger
 
 import lark_oapi as lark
 
@@ -6,6 +7,8 @@ from .actuator import FeishuActuator
 from .config import FeishuConfig
 from ..base import BaseBot
 from ...agents import SupervisorAgent
+
+logger = getLogger("multitool_office_ai")
 
 
 class FeiShuBot(BaseBot):
@@ -74,11 +77,11 @@ class FeiShuBot(BaseBot):
             pool.shutdown(wait=True)
 
         except KeyboardInterrupt:
-            print("\n[FeiShuBot] 收到停止信号")
+            logger.info("FeishuBot received stop signal")
         finally:
             # 清理资源
             pool.shutdown(wait=True, cancel_futures=True)
-            print("[FeiShuBot] 服务已停止")
+            logger.info("FeishuBot service stopped")
 
     def _run_actuator(self):
         """
