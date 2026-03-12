@@ -1,5 +1,4 @@
-from langchain_core.messages import HumanMessage, AIMessage
-
+from .bots import FeiShuBot, ChannelEnum
 from .config import ClientConfig
 
 
@@ -14,6 +13,11 @@ class MultitoolOfficeAiClient:
         """
         self.config = config
 
-    async def chat(self, message: HumanMessage) -> AIMessage:
-        """执行多工具办公 AI 客户端"""
-        pass
+    def start(self) -> None:
+        """启动渠道"""
+        match self.config.channel:
+            case ChannelEnum.FEISHU:
+                bot = FeiShuBot(self.config.channel_config)
+                bot.start()
+            case _:
+                raise ValueError(f"Unsupported channel: {self.config.channel}")
